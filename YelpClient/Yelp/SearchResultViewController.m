@@ -12,6 +12,7 @@
 @interface SearchResultViewController ()
 @property (nonatomic, strong) YelpClient *client;
 @property (nonatomic, strong) UISearchBar *searchBar;
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
 
 @end
 
@@ -32,9 +33,14 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+
+    [self styleNavigationBar];
+}
+
+- (void)styleNavigationBar {
     //1. color the navigation bar: this uses
     UIColor * const navBarBgColor = [UIColor colorWithRed:89/255.0f green:174/255.0f blue:235/255.0f alpha:1.0f];
-
+    
     NSArray *ver = [[UIDevice currentDevice].systemVersion componentsSeparatedByString:@"."];
     //ios 7+
     if ([[ver objectAtIndex:0] intValue] >= 7) {
@@ -59,19 +65,55 @@
     self.navigationItem.leftBarButtonItem = item;
     //self.navigationItem.leftBarButtonItem.title = @"Filter";
     self.navigationItem.leftBarButtonItem.tintColor = [UIColor whiteColor];
+    
+    
 }
-
 
 - (void)openFilterPage: (id) sender {
     
 }
 
-- (void)search {
-    [self.client searchWithTerm:@"Thai" success:^(AFHTTPRequestOperation *operation, id response) {
+- (void)doSearch:(NSString *)term {
+    [self.client searchWithTerm:term success:^(AFHTTPRequestOperation *operation, id response) {
+        
         NSLog(@"response: %@", response);
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        
         NSLog(@"error: %@", [error description]);
     }];
 }
+
+
+#pragma Tableview datasource
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return 10;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    
+    return nil;
+}
+
+#pragma tableview delegate
+
+- (void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+}
+
+#pragma search delegate
+/*- (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText {
+    [self doSearch:searchText];
+    [self.view endEditing:YES];
+}*/
+- (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar {
+    [self doSearch:_searchBar.text];
+    _searchBar.text = @"";
+    //searchbar needs explicity call to resign first responder
+    [_searchBar resignFirstResponder];
+    [self.view endEditing:YES];
+}
+
 
 @end
