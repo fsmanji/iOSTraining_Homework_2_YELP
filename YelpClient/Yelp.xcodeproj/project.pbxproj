@@ -25,6 +25,8 @@
 		B3BC12321BAB755A001A56C4 /* SearchResultViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B3BC12301BAB755A001A56C4 /* SearchResultViewController.m */; };
 		B3BC12331BAB755A001A56C4 /* SearchResultViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B3BC12311BAB755A001A56C4 /* SearchResultViewController.xib */; };
 		B3BC12371BAB8C02001A56C4 /* Business.m in Sources */ = {isa = PBXBuildFile; fileRef = B3BC12361BAB8C02001A56C4 /* Business.m */; };
+		B3BC123C1BABC609001A56C4 /* BusinessTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B3BC123A1BABC609001A56C4 /* BusinessTableViewCell.m */; };
+		B3BC123D1BABC609001A56C4 /* BusinessTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B3BC123B1BABC609001A56C4 /* BusinessTableViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,6 +67,9 @@
 		B3BC12311BAB755A001A56C4 /* SearchResultViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SearchResultViewController.xib; sourceTree = "<group>"; };
 		B3BC12351BAB8C02001A56C4 /* Business.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Business.h; sourceTree = "<group>"; };
 		B3BC12361BAB8C02001A56C4 /* Business.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Business.m; sourceTree = "<group>"; };
+		B3BC12391BABC609001A56C4 /* BusinessTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BusinessTableViewCell.h; sourceTree = "<group>"; };
+		B3BC123A1BABC609001A56C4 /* BusinessTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BusinessTableViewCell.m; sourceTree = "<group>"; };
+		B3BC123B1BABC609001A56C4 /* BusinessTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BusinessTableViewCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -148,6 +153,7 @@
 		42FD6C5018DC286B000BF2B9 /* Yelp */ = {
 			isa = PBXGroup;
 			children = (
+				B3BC12381BABC554001A56C4 /* Views */,
 				B3BC12341BAB8BAF001A56C4 /* Models */,
 				420474F318DC297600E88E07 /* API */,
 				420474F718DC2A9200E88E07 /* View Controllers */,
@@ -195,6 +201,16 @@
 				B3BC12361BAB8C02001A56C4 /* Business.m */,
 			);
 			name = Models;
+			sourceTree = "<group>";
+		};
+		B3BC12381BABC554001A56C4 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				B3BC12391BABC609001A56C4 /* BusinessTableViewCell.h */,
+				B3BC123A1BABC609001A56C4 /* BusinessTableViewCell.m */,
+				B3BC123B1BABC609001A56C4 /* BusinessTableViewCell.xib */,
+			);
+			name = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -275,6 +291,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				42FD6C5518DC286B000BF2B9 /* InfoPlist.strings in Resources */,
+				B3BC123D1BABC609001A56C4 /* BusinessTableViewCell.xib in Resources */,
 				42FD6C5D18DC286B000BF2B9 /* Images.xcassets in Resources */,
 				B3BC12331BAB755A001A56C4 /* SearchResultViewController.xib in Resources */,
 			);
@@ -328,6 +345,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B3BC123C1BABC609001A56C4 /* BusinessTableViewCell.m in Sources */,
 				B3BC12371BAB8C02001A56C4 /* Business.m in Sources */,
 				42FD6C5B18DC286B000BF2B9 /* AppDelegate.m in Sources */,
 				42FD6C5718DC286B000BF2B9 /* main.m in Sources */,

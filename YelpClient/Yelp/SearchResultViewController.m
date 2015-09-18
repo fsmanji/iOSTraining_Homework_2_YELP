@@ -8,6 +8,9 @@
 
 #import "SearchResultViewController.h"
 #import "YelpClient.h"
+#import "BusinessTableViewCell.h"
+#import "Business.h"
+#import "UIImageView+AFNetworking.h"
 
 @interface SearchResultViewController ()
 @property (nonatomic, strong) YelpClient *client;
@@ -38,6 +41,13 @@
     [super viewDidLoad];
 
     [self styleNavigationBar];
+    
+    _tableView.dataSource = self;
+    _tableView.delegate = self;
+    
+    [_tableView setEstimatedRowHeight:135];
+    _tableView.rowHeight = UITableViewAutomaticDimension;
+    
 }
 
 - (void)styleNavigationBar {
@@ -87,13 +97,29 @@
 #pragma Tableview datasource
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 10;
+    return [_searchResult count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    static NSString *simpleTableIdentifier = @"BusinessTableViewCell";
     
+    BusinessTableViewCell *cell = (BusinessTableViewCell *)[tableView dequeueReusableCellWithIdentifier:simpleTableIdentifier];
+    if (cell == nil)
+    {
+        NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"BusinessTableViewCell" owner:self options:nil];
+        cell = [nib objectAtIndex:0];
+    }
     
-    return nil;
+    NSInteger row = indexPath.row;
+    Business * business = _searchResult[row];
+    cell.nameLabel.text = business.name;
+    cell.reviewsLabel.text = business.reviews;
+    cell.addrLabel.text = business.address;
+    cell.categoryLabel.text = [[business.categories valueForKey:@"description"] componentsJoinedByString:@","];
+    [cell.avatarView setImageWithURL:[NSURL URLWithString:business.photoUrl]];
+    [cell.ratingImageView setImageWithURL:[NSURL URLWithString:business.ratingImgUrl]];
+    
+    return cell;
 }
 
 #pragma tableview delegate

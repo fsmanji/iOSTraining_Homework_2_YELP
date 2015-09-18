@@ -18,7 +18,8 @@
     self.ratingImgUrl = dictionary[@"rating_img_url"];
     self.distanceMeters = [dictionary[@"distance"] integerValue];
     
-    self.reviews = [dictionary[@"review_count"] integerValue];
+    self.reviews = [NSString stringWithFormat:@"%@ Reviews", dictionary[@"review_count"]];
+    
     NSMutableArray* list = [NSMutableArray array];
     NSArray* categories = dictionary[@"categories"];
     for (NSArray* category in categories) {

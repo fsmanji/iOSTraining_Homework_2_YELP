@@ -17,7 +17,7 @@
 @property NSInteger rating;
 @property NSArray* categories;
 @property NSInteger distanceMeters;
-@property NSInteger reviews;
+@property NSString* reviews;
 
 - (void) initWithDictionary:(NSDictionary *)dictionary;
 
