@@ -12,6 +12,8 @@
 
 - (void)awakeFromNib {
     // Initialization code
+    //below is lower level method for setting background of custom views
+    //self.layer.backgroundColor = [[UIColor blueColor] CGColor];
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

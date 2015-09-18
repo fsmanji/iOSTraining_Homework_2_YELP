@@ -79,17 +79,23 @@
     }
     
     
-    //2. add search bar
-    _searchBar = [[UISearchBar alloc] initWithFrame:CGRectMake(0, 0, 250, 40)];
-    //searchBar.backgroundImage = [[[UIImage alloc] init] autorelease];
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:_searchBar];
-    [_searchBar setPlaceholder:@"Restaurants"];
-    _searchBar.delegate = self;
+
     
     //3. add left button
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Filter" style:UIBarButtonItemStyleBordered target:self action:@selector(openFilterPage:)];
     
     self.navigationItem.leftBarButtonItem.tintColor = [UIColor whiteColor];
+    ;
+    
+    //2. add search bar
+    CGRect rect=[[UIScreen mainScreen] bounds];
+    int searchbarW = rect.size.width - 60;
+    
+    _searchBar = [[UISearchBar alloc] initWithFrame:CGRectMake(0, 0, searchbarW, 40)];
+    //searchBar.backgroundImage = [[[UIImage alloc] init] autorelease];
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:_searchBar];
+    [_searchBar setPlaceholder:@"Restaurants"];
+    _searchBar.delegate = self;
     
     
 }
@@ -171,5 +177,13 @@
     [self.view endEditing:YES];
 }
 
+
+- (void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation) fromInterfaceOrientation
+{
+    [super didRotateFromInterfaceOrientation:fromInterfaceOrientation];
+    
+    //This will automatically update the table cells with new width after screen rotated.
+    [_tableView reloadRowsAtIndexPaths:[_tableView indexPathsForVisibleRows] withRowAnimation:UITableViewRowAnimationNone];
+}
 
 @end
