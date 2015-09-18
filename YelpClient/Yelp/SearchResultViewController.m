@@ -61,6 +61,10 @@
     [self.refreshControl addTarget:self action:@selector(onRefresh:) forControlEvents:UIControlEventValueChanged];
     [self.tableView insertSubview:self.refreshControl atIndex:0];
     
+    //
+    UINib *nib = [UINib nibWithNibName:@"BusinessTableViewCell" bundle:nil];
+    [[self tableView] registerNib:nib forCellReuseIdentifier:@"BusinessTableViewCell"];
+    
 }
 
 - (void)styleNavigationBar {
@@ -89,10 +93,11 @@
     
     //2. add search bar
     CGRect rect=[[UIScreen mainScreen] bounds];
-    int searchbarW = rect.size.width - 60;
+    int searchbarW = rect.size.width - 80;
     
     _searchBar = [[UISearchBar alloc] initWithFrame:CGRectMake(0, 0, searchbarW, 40)];
-    //searchBar.backgroundImage = [[[UIImage alloc] init] autorelease];
+    _searchBar.autoresizingMask = UIViewAutoresizingFlexibleWidth;
+
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:_searchBar];
     [_searchBar setPlaceholder:@"Restaurants"];
     _searchBar.delegate = self;
@@ -157,9 +162,6 @@
     [cell.ratingImageView setImageWithURL:[NSURL URLWithString:business.ratingImgUrl]];
 }
 
-- (CGFloat)tableView:(UITableView *)tableView estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 100.0f;
-}
 
 #pragma tableview delegate
 
