@@ -14,6 +14,8 @@
 @property (nonatomic, strong) UISearchBar *searchBar;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
+@property NSMutableArray *searchResult;
+
 @end
 
 @implementation SearchResultViewController
@@ -25,6 +27,7 @@
     if (self) {
         // You can register for Yelp API keys here: http://www.yelp.com/developers/manage_api_keys
         self.client = [YelpClient defaultClient];
+        self.searchResult = [NSMutableArray array];
     }
     return self;
 }
@@ -61,9 +64,8 @@
     _searchBar.delegate = self;
     
     //3. add left button
-    UIBarButtonItem * item = [[UIBarButtonItem alloc] initWithTitle:@"Filter" style:UIBarButtonItemStyleBordered target:self action:@selector(openFilterPage:)];
-    self.navigationItem.leftBarButtonItem = item;
-    //self.navigationItem.leftBarButtonItem.title = @"Filter";
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Filter" style:UIBarButtonItemStyleBordered target:self action:@selector(openFilterPage:)];
+    
     self.navigationItem.leftBarButtonItem.tintColor = [UIColor whiteColor];
     
     
@@ -74,12 +76,10 @@
 }
 
 - (void)doSearch:(NSString *)term {
-    [self.client searchWithTerm:term success:^(AFHTTPRequestOperation *operation, id response) {
+    [self.client searchWithTerm:term successCallback:^(NSArray *businesses) {
+        [_searchResult addObjectsFromArray:businesses];
         
-        NSLog(@"response: %@", response);
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        
-        NSLog(@"error: %@", [error description]);
+        [self.tableView reloadData];
     }];
 }
 
@@ -103,10 +103,7 @@
 }
 
 #pragma search delegate
-/*- (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText {
-    [self doSearch:searchText];
-    [self.view endEditing:YES];
-}*/
+
 - (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar {
     [self doSearch:_searchBar.text];
     _searchBar.text = @"";

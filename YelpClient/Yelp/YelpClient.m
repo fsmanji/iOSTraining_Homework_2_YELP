@@ -9,6 +9,7 @@
 
 #import "YelpClient.h"
 #import "YelpCredentials.h"
+#import "Business.h"
 
 @implementation YelpClient
 
@@ -40,12 +41,34 @@
     return self;
 }
 
-- (AFHTTPRequestOperation *)searchWithTerm:(NSString *)term success:(void (^)(AFHTTPRequestOperation *operation, id response))success failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure {
+- (void)searchWithTerm:(NSString *)term successCallback:(void(^)(NSArray *))successCallback {
     
     // For additional parameters, see http://www.yelp.com/developers/documentation/v2/search_api
-    NSDictionary *parameters = @{@"term": term, @"ll" : @"37.774866,-122.394556"};
+    NSDictionary *parameters = @{@"term": term,
+                                 @"location": @"San Francisco",
+                                 @"cll": @"37.7833, 122.4167"};
     
-    return [self GET:@"search" parameters:parameters success:success failure:failure];
+    NSLog(@"Search with parameters: %@", parameters);
+
+    NSMutableArray *list = [[NSMutableArray alloc] init];
+    [self GET:@"search" parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
+          
+          NSArray *results = responseObject[@"businesses"];
+          if (results) {
+              
+              for (NSDictionary *result in results) {
+                  Business *business = [[Business alloc] init];
+                  [business initWithDictionary:result];
+                  [list addObject:business];
+                  NSLog(@"Business: %@", business);
+              }
+              successCallback(list);
+              NSLog(@"JSON: %@", responseObject);
+          }
+      } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+          NSLog(@"Failure while trying to fetch repos");
+          successCallback(list);
+      }];
 }
 
 @end
