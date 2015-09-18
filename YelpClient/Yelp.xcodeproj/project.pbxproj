@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		420474F618DC299500E88E07 /* YelpClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 420474F518DC299500E88E07 /* YelpClient.m */; };
+		420474F618DC299500E88E07 /* YelpAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 420474F518DC299500E88E07 /* YelpAPI.m */; };
 		42FD6C4B18DC286B000BF2B9 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 42FD6C4A18DC286B000BF2B9 /* Foundation.framework */; };
 		42FD6C4D18DC286B000BF2B9 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 42FD6C4C18DC286B000BF2B9 /* CoreGraphics.framework */; };
 		42FD6C4F18DC286B000BF2B9 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 42FD6C4E18DC286B000BF2B9 /* UIKit.framework */; };
@@ -40,8 +40,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		420474F418DC299500E88E07 /* YelpClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YelpClient.h; sourceTree = "<group>"; };
-		420474F518DC299500E88E07 /* YelpClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YelpClient.m; sourceTree = "<group>"; };
+		420474F418DC299500E88E07 /* YelpAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YelpAPI.h; sourceTree = "<group>"; };
+		420474F518DC299500E88E07 /* YelpAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YelpAPI.m; sourceTree = "<group>"; };
 		42FD6C4718DC286B000BF2B9 /* Yelp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Yelp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		42FD6C4A18DC286B000BF2B9 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		42FD6C4C18DC286B000BF2B9 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -101,8 +101,8 @@
 		420474F318DC297600E88E07 /* API */ = {
 			isa = PBXGroup;
 			children = (
-				420474F418DC299500E88E07 /* YelpClient.h */,
-				420474F518DC299500E88E07 /* YelpClient.m */,
+				420474F418DC299500E88E07 /* YelpAPI.h */,
+				420474F518DC299500E88E07 /* YelpAPI.m */,
 				B3BC122C1BAB72C2001A56C4 /* YelpCredentials.h */,
 				B3BC122D1BAB72C2001A56C4 /* YelpCredentials.m */,
 			);
@@ -359,7 +359,7 @@
 				B3BC12371BAB8C02001A56C4 /* Business.m in Sources */,
 				42FD6C5B18DC286B000BF2B9 /* AppDelegate.m in Sources */,
 				42FD6C5718DC286B000BF2B9 /* main.m in Sources */,
-				420474F618DC299500E88E07 /* YelpClient.m in Sources */,
+				420474F618DC299500E88E07 /* YelpAPI.m in Sources */,
 				B3BC122E1BAB72C2001A56C4 /* YelpCredentials.m in Sources */,
 				B3BC12321BAB755A001A56C4 /* SearchResultViewController.m in Sources */,
 			);

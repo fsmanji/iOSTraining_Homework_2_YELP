@@ -7,14 +7,14 @@
 //
 
 #import "SearchResultViewController.h"
-#import "YelpClient.h"
+#import "YelpAPI.h"
 #import "BusinessTableViewCell.h"
 #import "Business.h"
 #import "UIImageView+AFNetworking.h"
 #import "MBProgressHUD.h"
 
 @interface SearchResultViewController ()
-@property (nonatomic, strong) YelpClient *client;
+@property (nonatomic, strong) YelpAPI *client;
 @property (nonatomic, strong) UISearchBar *searchBar;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (nonatomic, strong) UIRefreshControl* refreshControl;
@@ -32,7 +32,7 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // You can register for Yelp API keys here: http://www.yelp.com/developers/manage_api_keys
-        self.client = [YelpClient defaultClient];
+        self.client = [YelpAPI defaultClient];
         self.searchResult = [NSMutableArray array];
     }
     return self;
@@ -105,10 +105,13 @@
 - (void)doSearch:(NSString *)term {
     _lastSearchStr = term;
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    [self.client searchWithTerm:term successCallback:^(NSArray *businesses) {
-        [_searchResult addObjectsFromArray:businesses];
-        
-        [self.tableView reloadData];
+    [self.client searchWithTerm:term completionHandler:^(NSArray *businesses, NSError *error) {
+        if([businesses count] > 0) {
+            [_searchResult addObjectsFromArray:businesses];
+            [self.tableView reloadData];
+        } else if(error != nil) {
+            
+        }
         [self.refreshControl endRefreshing];
         [MBProgressHUD hideHUDForView:self.view animated:YES];
     }];

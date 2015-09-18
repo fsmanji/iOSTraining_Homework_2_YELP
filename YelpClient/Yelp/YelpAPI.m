@@ -1,5 +1,5 @@
 //
-//  YelpClient.m
+//  YelpAPI.m
 //  Yelp
 //
 //  Created by Cristan Zhang on 9/17/15.
@@ -7,14 +7,14 @@
 //
 
 
-#import "YelpClient.h"
+#import "YelpAPI.h"
 #import "YelpCredentials.h"
 #import "Business.h"
 
-@implementation YelpClient
+@implementation YelpAPI
 
 +(id) defaultClient {
-    static YelpClient *defaultClient = nil;
+    static YelpAPI *defaultClient = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         defaultClient = [[self alloc] initWithConsumerKey:kYelpConsumerKey consumerSecret:kYelpConsumerSecret accessToken:kYelpToken accessSecret:kYelpTokenSecret];
@@ -41,7 +41,7 @@
     return self;
 }
 
-- (void)searchWithTerm:(NSString *)term successCallback:(void(^)(NSArray *))successCallback {
+- (void)searchWithTerm:(NSString *)term completionHandler:(void(^)(NSArray *businesses, NSError *error))handler {
     
     // For additional parameters, see http://www.yelp.com/developers/documentation/v2/search_api
     NSDictionary *parameters = @{@"term": term,
@@ -62,12 +62,12 @@
                   [list addObject:business];
                   NSLog(@"Business: %@", business);
               }
-              successCallback(list);
+              handler(list, nil);
               NSLog(@"JSON: %@", responseObject);
           }
       } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
           NSLog(@"Failure while trying to fetch repos");
-          successCallback(list);
+          handler(list, error);
       }];
 }
 
