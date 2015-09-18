@@ -11,6 +11,7 @@
 #import "BusinessTableViewCell.h"
 #import "Business.h"
 #import "UIImageView+AFNetworking.h"
+#import "MBProgressHUD.h"
 
 @interface SearchResultViewController ()
 @property (nonatomic, strong) YelpClient *client;
@@ -103,11 +104,13 @@
 
 - (void)doSearch:(NSString *)term {
     _lastSearchStr = term;
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     [self.client searchWithTerm:term successCallback:^(NSArray *businesses) {
         [_searchResult addObjectsFromArray:businesses];
         
         [self.tableView reloadData];
         [self.refreshControl endRefreshing];
+        [MBProgressHUD hideHUDForView:self.view animated:YES];
     }];
 }
 

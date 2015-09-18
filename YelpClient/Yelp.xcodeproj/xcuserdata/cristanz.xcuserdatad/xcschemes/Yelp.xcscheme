@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "42FD6C4618DC286A000BF2B9"
-               BuildableName = "YelpClient.app"
+               BuildableName = "Yelp.app"
                BlueprintName = "Yelp"
                ReferencedContainer = "container:Yelp.xcodeproj">
             </BuildableReference>
@@ -29,7 +29,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "42FD6C6118DC286B000BF2B9"
-               BuildableName = "YelpClientTests.xctest"
+               BuildableName = "YelpTests.xctest"
                BlueprintName = "YelpTests"
                ReferencedContainer = "container:Yelp.xcodeproj">
             </BuildableReference>
@@ -47,7 +47,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "42FD6C6118DC286B000BF2B9"
-               BuildableName = "YelpClientTests.xctest"
+               BuildableName = "YelpTests.xctest"
                BlueprintName = "YelpTests"
                ReferencedContainer = "container:Yelp.xcodeproj">
             </BuildableReference>
@@ -57,7 +57,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "42FD6C4618DC286A000BF2B9"
-            BuildableName = "YelpClient.app"
+            BuildableName = "Yelp.app"
             BlueprintName = "Yelp"
             ReferencedContainer = "container:Yelp.xcodeproj">
          </BuildableReference>
@@ -77,7 +77,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "42FD6C4618DC286A000BF2B9"
-            BuildableName = "YelpClient.app"
+            BuildableName = "Yelp.app"
             BlueprintName = "Yelp"
             ReferencedContainer = "container:Yelp.xcodeproj">
          </BuildableReference>
@@ -96,7 +96,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "42FD6C4618DC286A000BF2B9"
-            BuildableName = "YelpClient.app"
+            BuildableName = "Yelp.app"
             BlueprintName = "Yelp"
             ReferencedContainer = "container:Yelp.xcodeproj">
          </BuildableReference>
