@@ -42,11 +42,15 @@
 
     [self styleNavigationBar];
     
+    [self configureTableView];
+}
+
+- (void)configureTableView {
     _tableView.dataSource = self;
     _tableView.delegate = self;
     
-    [_tableView setEstimatedRowHeight:135];
-    _tableView.rowHeight = UITableViewAutomaticDimension;
+    [_tableView setEstimatedRowHeight:96];
+    [_tableView setRowHeight:UITableViewAutomaticDimension];
     
 }
 
@@ -110,6 +114,12 @@
         cell = [nib objectAtIndex:0];
     }
     
+    [self configureCell:cell atIndexPath:indexPath];
+    
+    return cell;
+}
+
+- (void)configureCell:(BusinessTableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath {
     NSInteger row = indexPath.row;
     Business * business = _searchResult[row];
     cell.nameLabel.text = business.name;
@@ -118,8 +128,10 @@
     cell.categoryLabel.text = [[business.categories valueForKey:@"description"] componentsJoinedByString:@","];
     [cell.avatarView setImageWithURL:[NSURL URLWithString:business.photoUrl]];
     [cell.ratingImageView setImageWithURL:[NSURL URLWithString:business.ratingImgUrl]];
-    
-    return cell;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return 100.0f;
 }
 
 #pragma tableview delegate
