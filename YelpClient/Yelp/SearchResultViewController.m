@@ -12,6 +12,7 @@
 #import "Business.h"
 #import "UIImageView+AFNetworking.h"
 #import "MBProgressHUD.h"
+#import "UIAlertView+YELP.h"
 
 @interface SearchResultViewController ()
 @property (nonatomic, strong) YelpAPI *client;
@@ -110,7 +111,7 @@
             [_searchResult addObjectsFromArray:businesses];
             [self.tableView reloadData];
         } else if(error != nil) {
-            
+            [UIAlertView showAlert:self with:@"Search Yelp Failed!" withMessage:error.description];
         }
         [self.refreshControl endRefreshing];
         [MBProgressHUD hideHUDForView:self.view animated:YES];

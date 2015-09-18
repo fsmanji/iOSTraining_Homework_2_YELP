@@ -21,6 +21,7 @@
 		42FD6C6E18DC286B000BF2B9 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 42FD6C6C18DC286B000BF2B9 /* InfoPlist.strings */; };
 		42FD6C7018DC286B000BF2B9 /* YelpTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 42FD6C6F18DC286B000BF2B9 /* YelpTests.m */; };
 		63E591F41F684901AF8C1C19 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9DEC6D18C14F46F8AF2EA320 /* libPods.a */; };
+		B3A2DD9B1BAC73AF006BE0DB /* UIAlertView+YELP.m in Sources */ = {isa = PBXBuildFile; fileRef = B3A2DD9A1BAC73AF006BE0DB /* UIAlertView+YELP.m */; };
 		B3BC122E1BAB72C2001A56C4 /* YelpCredentials.m in Sources */ = {isa = PBXBuildFile; fileRef = B3BC122D1BAB72C2001A56C4 /* YelpCredentials.m */; };
 		B3BC12321BAB755A001A56C4 /* SearchResultViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B3BC12301BAB755A001A56C4 /* SearchResultViewController.m */; };
 		B3BC12331BAB755A001A56C4 /* SearchResultViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B3BC12311BAB755A001A56C4 /* SearchResultViewController.xib */; };
@@ -60,6 +61,8 @@
 		42FD6C6F18DC286B000BF2B9 /* YelpTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YelpTests.m; sourceTree = "<group>"; };
 		7312E650C2D48710103206D6 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		9DEC6D18C14F46F8AF2EA320 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		B3A2DD991BAC73AF006BE0DB /* UIAlertView+YELP.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIAlertView+YELP.h"; sourceTree = "<group>"; };
+		B3A2DD9A1BAC73AF006BE0DB /* UIAlertView+YELP.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIAlertView+YELP.m"; sourceTree = "<group>"; };
 		B3BC122C1BAB72C2001A56C4 /* YelpCredentials.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YelpCredentials.h; sourceTree = "<group>"; };
 		B3BC122D1BAB72C2001A56C4 /* YelpCredentials.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YelpCredentials.m; sourceTree = "<group>"; };
 		B3BC122F1BAB755A001A56C4 /* SearchResultViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchResultViewController.h; sourceTree = "<group>"; };
@@ -210,6 +213,8 @@
 				B3BC12391BABC609001A56C4 /* BusinessTableViewCell.h */,
 				B3BC123A1BABC609001A56C4 /* BusinessTableViewCell.m */,
 				B3BC123B1BABC609001A56C4 /* BusinessTableViewCell.xib */,
+				B3A2DD991BAC73AF006BE0DB /* UIAlertView+YELP.h */,
+				B3A2DD9A1BAC73AF006BE0DB /* UIAlertView+YELP.m */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -358,6 +363,7 @@
 				B3BC123C1BABC609001A56C4 /* BusinessTableViewCell.m in Sources */,
 				B3BC12371BAB8C02001A56C4 /* Business.m in Sources */,
 				42FD6C5B18DC286B000BF2B9 /* AppDelegate.m in Sources */,
+				B3A2DD9B1BAC73AF006BE0DB /* UIAlertView+YELP.m in Sources */,
 				42FD6C5718DC286B000BF2B9 /* main.m in Sources */,
 				420474F618DC299500E88E07 /* YelpAPI.m in Sources */,
 				B3BC122E1BAB72C2001A56C4 /* YelpCredentials.m in Sources */,
