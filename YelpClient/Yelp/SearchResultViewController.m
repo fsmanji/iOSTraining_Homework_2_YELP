@@ -16,8 +16,10 @@
 @property (nonatomic, strong) YelpClient *client;
 @property (nonatomic, strong) UISearchBar *searchBar;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (nonatomic, strong) UIRefreshControl* refreshControl;
 
 @property NSMutableArray *searchResult;
+@property NSString *lastSearchStr;
 
 @end
 
@@ -51,6 +53,11 @@
     
     [_tableView setEstimatedRowHeight:96];
     [_tableView setRowHeight:UITableViewAutomaticDimension];
+    
+    //add a PTR control
+    self.refreshControl = [[UIRefreshControl alloc] init];
+    [self.refreshControl addTarget:self action:@selector(onRefresh:) forControlEvents:UIControlEventValueChanged];
+    [self.tableView insertSubview:self.refreshControl atIndex:0];
     
 }
 
@@ -89,11 +96,18 @@
     
 }
 
+- (void)onRefresh:(id)sender {
+    [_searchResult removeAllObjects];
+    [self doSearch:_lastSearchStr];
+}
+
 - (void)doSearch:(NSString *)term {
+    _lastSearchStr = term;
     [self.client searchWithTerm:term successCallback:^(NSArray *businesses) {
         [_searchResult addObjectsFromArray:businesses];
         
         [self.tableView reloadData];
+        [self.refreshControl endRefreshing];
     }];
 }
 
