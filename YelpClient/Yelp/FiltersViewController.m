@@ -14,6 +14,10 @@
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (nonatomic, readonly) NSDictionary *filters;
 @property NSArray* categories;
+@property NSArray* sortByFilters;
+@property NSArray* radiusFilters;
+@property NSArray* sections;
+
 @property NSMutableSet *selectedCategories;
 
 @end
@@ -31,9 +35,15 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
+        _selectedCategories = [[NSMutableSet alloc] init];
+        _sortByFilters = @[@"Best Match", @"Distance", @"Highest Rated"];
+        _radiusFilters = @[@0.2, @1, @5, @10];
+        
+        _sections = @[@"Deals only",@"Sort", @"Distance", @"Category"];
+        
         [self styleNavigationBar];
         [self loadDictionaryJsonFile];
-        _selectedCategories = [[NSMutableSet alloc] init];
+        
     }
     return self;
 }
@@ -43,7 +53,7 @@
 
 - (void)configTableView {
     self.tableView.dataSource = self;
-//    self.tableView.delegate = self;
+    self.tableView.delegate = self;
     NSString *nibName = [SwitchCell description];
     [self.tableView registerNib:[UINib nibWithNibName:nibName bundle:nil]
          forCellReuseIdentifier:nibName];
@@ -121,18 +131,67 @@
 
 #pragma Tableview datasource
 
+-(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    return _sections.count;
+}
+
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return _categories.count;
+    NSInteger ret = 1;
+    switch (section) {
+        case 0:
+            ret = 0;
+            break;
+        case 1:
+            ret = _sortByFilters.count;
+            break;
+        case 2:
+            ret = _radiusFilters.count;
+            break;
+        case 3:
+            ret = _categories.count;
+            break;
+        default:
+            break;
+    }
+    
+    return ret;
+}
+
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
+    
+    UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 50)];
+    [headerView setBackgroundColor:[UIColor brownColor]];
+
+    // Add a UILabel for the username here
+    UILabel* nameLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 320, 44)];
+    
+    nameLabel.text = _sections[section];
+    [headerView addSubview:nameLabel];
+    
+    return headerView;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
+    return 44;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    NSString *cellID = [SwitchCell description];
     
-    SwitchCell *cell = (SwitchCell *)[_tableView dequeueReusableCellWithIdentifier:cellID];
+    if(indexPath.section == 3) {
+    
+        NSString *cellID = [SwitchCell description];
+    
+        SwitchCell *cell = (SwitchCell *)[_tableView dequeueReusableCellWithIdentifier:cellID];
 
-    [self configureCell:cell atIndexPath:indexPath];
+        [self configureCell:cell atIndexPath:indexPath];
     
-    return cell;
+        return cell;
+    } else {
+         UITableViewCell* cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@""];
+        
+        cell.textLabel.text = @"xx";
+        return cell;
+    }
 }
 
 - (void)configureCell:(SwitchCell *)cell atIndexPath:(NSIndexPath *)indexPath {

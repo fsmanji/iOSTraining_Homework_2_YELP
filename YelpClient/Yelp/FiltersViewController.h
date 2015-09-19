@@ -17,7 +17,7 @@
 
 @end
 
-@interface FiltersViewController : UIViewController <UITableViewDataSource, SwitchCellDelegate>
+@interface FiltersViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, SwitchCellDelegate>
 
 @property (nonatomic, weak) id<FiltersDelegate> delegate;
 

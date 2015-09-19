@@ -190,6 +190,7 @@
 #pragma search delegate
 
 - (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar {
+    [_searchResult removeAllObjects];
     [self doSearch:_searchBar.text withFilters:nil];
     _searchBar.text = @"";
     //searchbar needs explicity call to resign first responder
