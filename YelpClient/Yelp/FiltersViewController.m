@@ -7,6 +7,7 @@
 //
 
 #import "FiltersViewController.h"
+#include "SwitchCell.h"
 
 @interface FiltersViewController ()
 
@@ -47,7 +48,6 @@
         //ios 6 and older
         self.navigationController.navigationBar.tintColor = navBarBgColor;
     }
-    
     
     // add right button
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Search" style:UIBarButtonItemStyleBordered target:self action:@selector(onSearchClicked:)];

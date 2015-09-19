@@ -24,6 +24,8 @@
 		B3A2DD9B1BAC73AF006BE0DB /* UIAlertView+YELP.m in Sources */ = {isa = PBXBuildFile; fileRef = B3A2DD9A1BAC73AF006BE0DB /* UIAlertView+YELP.m */; };
 		B3A2DDE31BACE133006BE0DB /* FiltersViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B3A2DDE11BACE133006BE0DB /* FiltersViewController.m */; };
 		B3A2DDE41BACE133006BE0DB /* FiltersViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B3A2DDE21BACE133006BE0DB /* FiltersViewController.xib */; };
+		B3A2DDE81BACEA4F006BE0DB /* SwitchCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B3A2DDE61BACEA4F006BE0DB /* SwitchCell.m */; };
+		B3A2DDE91BACEA4F006BE0DB /* SwitchCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B3A2DDE71BACEA4F006BE0DB /* SwitchCell.xib */; };
 		B3BC122E1BAB72C2001A56C4 /* YelpCredentials.m in Sources */ = {isa = PBXBuildFile; fileRef = B3BC122D1BAB72C2001A56C4 /* YelpCredentials.m */; };
 		B3BC12321BAB755A001A56C4 /* SearchResultViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B3BC12301BAB755A001A56C4 /* SearchResultViewController.m */; };
 		B3BC12331BAB755A001A56C4 /* SearchResultViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B3BC12311BAB755A001A56C4 /* SearchResultViewController.xib */; };
@@ -68,6 +70,9 @@
 		B3A2DDE01BACE133006BE0DB /* FiltersViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FiltersViewController.h; sourceTree = "<group>"; };
 		B3A2DDE11BACE133006BE0DB /* FiltersViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FiltersViewController.m; sourceTree = "<group>"; };
 		B3A2DDE21BACE133006BE0DB /* FiltersViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FiltersViewController.xib; sourceTree = "<group>"; };
+		B3A2DDE51BACEA4F006BE0DB /* SwitchCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SwitchCell.h; sourceTree = "<group>"; };
+		B3A2DDE61BACEA4F006BE0DB /* SwitchCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SwitchCell.m; sourceTree = "<group>"; };
+		B3A2DDE71BACEA4F006BE0DB /* SwitchCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SwitchCell.xib; sourceTree = "<group>"; };
 		B3BC122C1BAB72C2001A56C4 /* YelpCredentials.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YelpCredentials.h; sourceTree = "<group>"; };
 		B3BC122D1BAB72C2001A56C4 /* YelpCredentials.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YelpCredentials.m; sourceTree = "<group>"; };
 		B3BC122F1BAB755A001A56C4 /* SearchResultViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchResultViewController.h; sourceTree = "<group>"; };
@@ -223,6 +228,9 @@
 				B3BC123B1BABC609001A56C4 /* BusinessTableViewCell.xib */,
 				B3A2DD991BAC73AF006BE0DB /* UIAlertView+YELP.h */,
 				B3A2DD9A1BAC73AF006BE0DB /* UIAlertView+YELP.m */,
+				B3A2DDE51BACEA4F006BE0DB /* SwitchCell.h */,
+				B3A2DDE61BACEA4F006BE0DB /* SwitchCell.m */,
+				B3A2DDE71BACEA4F006BE0DB /* SwitchCell.xib */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -318,6 +326,7 @@
 				B3A2DDE41BACE133006BE0DB /* FiltersViewController.xib in Resources */,
 				42FD6C5D18DC286B000BF2B9 /* Images.xcassets in Resources */,
 				B3BC12331BAB755A001A56C4 /* SearchResultViewController.xib in Resources */,
+				B3A2DDE91BACEA4F006BE0DB /* SwitchCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -378,6 +387,7 @@
 				B3A2DDE31BACE133006BE0DB /* FiltersViewController.m in Sources */,
 				B3BC122E1BAB72C2001A56C4 /* YelpCredentials.m in Sources */,
 				B3BC12321BAB755A001A56C4 /* SearchResultViewController.m in Sources */,
+				B3A2DDE81BACEA4F006BE0DB /* SwitchCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
