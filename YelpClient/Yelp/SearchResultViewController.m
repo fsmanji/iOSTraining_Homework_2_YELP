@@ -13,8 +13,10 @@
 #import "UIImageView+AFNetworking.h"
 #import "MBProgressHUD.h"
 #import "UIAlertView+YELP.h"
+#import "FiltersViewController.h"
 
-@interface SearchResultViewController ()
+@interface SearchResultViewController () <FiltersDelegate>
+
 @property (nonatomic, strong) YelpAPI *client;
 @property (nonatomic, strong) UISearchBar *searchBar;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -48,6 +50,20 @@
     
     [self configureTableView];
 }
+
+
+- (void)openFilterPage: (id) sender {
+    FiltersViewController* filtersPage = [[FiltersViewController alloc] init];
+    filtersPage.delegate = self;
+    [self.navigationController pushViewController:filtersPage animated:YES];
+}
+
+- (void)onRefresh:(id)sender {
+    [_searchResult removeAllObjects];
+    [self doSearch:_lastSearchStr];
+}
+
+#pragma private methods
 
 - (void)configureTableView {
     _tableView.dataSource = self;
@@ -83,8 +99,6 @@
     }
     
     
-
-    
     //3. add left button
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Filter" style:UIBarButtonItemStyleBordered target:self action:@selector(openFilterPage:)];
     
@@ -105,14 +119,6 @@
     
 }
 
-- (void)openFilterPage: (id) sender {
-    
-}
-
-- (void)onRefresh:(id)sender {
-    [_searchResult removeAllObjects];
-    [self doSearch:_lastSearchStr];
-}
 
 - (void)doSearch:(NSString *)term {
     _lastSearchStr = term;
@@ -129,6 +135,10 @@
     }];
 }
 
+
+- (void)filtersViewController:(FiltersViewController *)sender didChangeFilters:(NSDictionary *)filters {
+    
+}
 
 #pragma Tableview datasource
 

@@ -22,6 +22,8 @@
 		42FD6C7018DC286B000BF2B9 /* YelpTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 42FD6C6F18DC286B000BF2B9 /* YelpTests.m */; };
 		63E591F41F684901AF8C1C19 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9DEC6D18C14F46F8AF2EA320 /* libPods.a */; };
 		B3A2DD9B1BAC73AF006BE0DB /* UIAlertView+YELP.m in Sources */ = {isa = PBXBuildFile; fileRef = B3A2DD9A1BAC73AF006BE0DB /* UIAlertView+YELP.m */; };
+		B3A2DDE31BACE133006BE0DB /* FiltersViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B3A2DDE11BACE133006BE0DB /* FiltersViewController.m */; };
+		B3A2DDE41BACE133006BE0DB /* FiltersViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B3A2DDE21BACE133006BE0DB /* FiltersViewController.xib */; };
 		B3BC122E1BAB72C2001A56C4 /* YelpCredentials.m in Sources */ = {isa = PBXBuildFile; fileRef = B3BC122D1BAB72C2001A56C4 /* YelpCredentials.m */; };
 		B3BC12321BAB755A001A56C4 /* SearchResultViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B3BC12301BAB755A001A56C4 /* SearchResultViewController.m */; };
 		B3BC12331BAB755A001A56C4 /* SearchResultViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B3BC12311BAB755A001A56C4 /* SearchResultViewController.xib */; };
@@ -63,6 +65,9 @@
 		9DEC6D18C14F46F8AF2EA320 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		B3A2DD991BAC73AF006BE0DB /* UIAlertView+YELP.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIAlertView+YELP.h"; sourceTree = "<group>"; };
 		B3A2DD9A1BAC73AF006BE0DB /* UIAlertView+YELP.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIAlertView+YELP.m"; sourceTree = "<group>"; };
+		B3A2DDE01BACE133006BE0DB /* FiltersViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FiltersViewController.h; sourceTree = "<group>"; };
+		B3A2DDE11BACE133006BE0DB /* FiltersViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FiltersViewController.m; sourceTree = "<group>"; };
+		B3A2DDE21BACE133006BE0DB /* FiltersViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FiltersViewController.xib; sourceTree = "<group>"; };
 		B3BC122C1BAB72C2001A56C4 /* YelpCredentials.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YelpCredentials.h; sourceTree = "<group>"; };
 		B3BC122D1BAB72C2001A56C4 /* YelpCredentials.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YelpCredentials.m; sourceTree = "<group>"; };
 		B3BC122F1BAB755A001A56C4 /* SearchResultViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchResultViewController.h; sourceTree = "<group>"; };
@@ -118,6 +123,9 @@
 				B3BC122F1BAB755A001A56C4 /* SearchResultViewController.h */,
 				B3BC12301BAB755A001A56C4 /* SearchResultViewController.m */,
 				B3BC12311BAB755A001A56C4 /* SearchResultViewController.xib */,
+				B3A2DDE01BACE133006BE0DB /* FiltersViewController.h */,
+				B3A2DDE11BACE133006BE0DB /* FiltersViewController.m */,
+				B3A2DDE21BACE133006BE0DB /* FiltersViewController.xib */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -307,6 +315,7 @@
 			files = (
 				42FD6C5518DC286B000BF2B9 /* InfoPlist.strings in Resources */,
 				B3BC123D1BABC609001A56C4 /* BusinessTableViewCell.xib in Resources */,
+				B3A2DDE41BACE133006BE0DB /* FiltersViewController.xib in Resources */,
 				42FD6C5D18DC286B000BF2B9 /* Images.xcassets in Resources */,
 				B3BC12331BAB755A001A56C4 /* SearchResultViewController.xib in Resources */,
 			);
@@ -366,6 +375,7 @@
 				B3A2DD9B1BAC73AF006BE0DB /* UIAlertView+YELP.m in Sources */,
 				42FD6C5718DC286B000BF2B9 /* main.m in Sources */,
 				420474F618DC299500E88E07 /* YelpAPI.m in Sources */,
+				B3A2DDE31BACE133006BE0DB /* FiltersViewController.m in Sources */,
 				B3BC122E1BAB72C2001A56C4 /* YelpCredentials.m in Sources */,
 				B3BC12321BAB755A001A56C4 /* SearchResultViewController.m in Sources */,
 			);
