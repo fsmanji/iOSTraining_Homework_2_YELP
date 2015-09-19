@@ -11,14 +11,19 @@
 
 @interface FiltersViewController ()
 
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (nonatomic, readonly) NSDictionary *filters;
+@property NSArray* categories;
+@property NSMutableSet *selectedCategories;
+
 @end
 
 @implementation FiltersViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
+    
+    [self configTableView];
 }
 
 
@@ -27,12 +32,22 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         [self styleNavigationBar];
+        [self loadDictionaryJsonFile];
+        _selectedCategories = [[NSMutableSet alloc] init];
     }
     return self;
 }
 
-#pragma private methods
+#pragma private methods BEGIN
 
+
+- (void)configTableView {
+    self.tableView.dataSource = self;
+//    self.tableView.delegate = self;
+    NSString *nibName = [SwitchCell description];
+    [self.tableView registerNib:[UINib nibWithNibName:nibName bundle:nil]
+         forCellReuseIdentifier:nibName];
+}
 
 - (void)styleNavigationBar {
     //color the navigation bar
@@ -77,9 +92,70 @@
 
 
 - (void)onSearchClicked:(id)sender {
-    
-    [_delegate filtersViewController:self didChangeFilters:_filters];
+    if(_selectedCategories.count > 0) {
+        
+        NSMutableArray * alias = [NSMutableArray array];
+        for(NSDictionary * category in _selectedCategories) {
+            [alias addObject:category[@"alias"]];
+        }
+        NSString *filterString = [alias componentsJoinedByString:@","];
+
+        [_delegate filtersViewController:self didChangeFilters:filterString];
+    }
     [self.navigationController popViewControllerAnimated:YES];
+}
+
+- (void)loadDictionaryJsonFile {
+    NSString *fileName = @"categories.json";
+    NSString *filePath = [[NSBundle mainBundle] pathForResource:fileName ofType:nil];
+    
+    //création d'un string avec le contenu du JSON
+    NSString *jsonString = [[NSString alloc] initWithContentsOfFile:filePath encoding:NSUTF8StringEncoding error:NULL];
+
+    NSError *jsonError;
+    _categories = [NSJSONSerialization JSONObjectWithData:[jsonString dataUsingEncoding:NSUTF8StringEncoding] options:NSJSONReadingMutableContainers error:&jsonError];
+}
+
+#pragma private methods END
+
+
+#pragma Tableview datasource
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return _categories.count;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    NSString *cellID = [SwitchCell description];
+    
+    SwitchCell *cell = (SwitchCell *)[_tableView dequeueReusableCellWithIdentifier:cellID];
+
+    [self configureCell:cell atIndexPath:indexPath];
+    
+    return cell;
+}
+
+- (void)configureCell:(SwitchCell *)cell atIndexPath:(NSIndexPath *)indexPath {
+    cell.delegate = self;
+    cell.titleLabel.text = _categories[indexPath.row][@"title"];
+    cell.toggleSwitch.on = [_selectedCategories containsObject:_categories[indexPath.row]];
+}
+
+
+#pragma tableview delegate
+
+- (void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+}
+
+- (void)switchCell:(SwitchCell *)switchCell onValueChanged:(BOOL)value {
+    NSIndexPath* indexPath = [_tableView indexPathForCell:switchCell];
+    NSInteger row = indexPath.row;
+    if(value) {
+        [_selectedCategories addObject:self.categories[row]];
+    }else {
+        [_selectedCategories removeObject:self.categories[row]];
+    }
 }
 
 @end

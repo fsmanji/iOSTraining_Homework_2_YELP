@@ -10,7 +10,6 @@
 
 @interface SwitchCell ()
 
-@property (nonatomic, weak) id<SwitchCellDelegate> delegate;
 @end
 
 @implementation SwitchCell
@@ -23,6 +22,10 @@
 - (IBAction)onSwitchToggled:(UISwitch *)sender {
     
     [_delegate switchCell:self onValueChanged:sender.on];
+}
+
++(NSString *)description {
+    return @"SwitchCell";
 }
 
 @end

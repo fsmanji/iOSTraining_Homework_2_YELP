@@ -19,4 +19,5 @@
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 @property (weak, nonatomic) IBOutlet UISwitch *toggleSwitch;
 
+@property (nonatomic, weak) id<SwitchCellDelegate> delegate;
 @end

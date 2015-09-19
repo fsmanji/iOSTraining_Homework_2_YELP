@@ -26,6 +26,7 @@
 		B3A2DDE41BACE133006BE0DB /* FiltersViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B3A2DDE21BACE133006BE0DB /* FiltersViewController.xib */; };
 		B3A2DDE81BACEA4F006BE0DB /* SwitchCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B3A2DDE61BACEA4F006BE0DB /* SwitchCell.m */; };
 		B3A2DDE91BACEA4F006BE0DB /* SwitchCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B3A2DDE71BACEA4F006BE0DB /* SwitchCell.xib */; };
+		B3A2DDEB1BACEF6D006BE0DB /* categories.json in Resources */ = {isa = PBXBuildFile; fileRef = B3A2DDEA1BACEF6D006BE0DB /* categories.json */; };
 		B3BC122E1BAB72C2001A56C4 /* YelpCredentials.m in Sources */ = {isa = PBXBuildFile; fileRef = B3BC122D1BAB72C2001A56C4 /* YelpCredentials.m */; };
 		B3BC12321BAB755A001A56C4 /* SearchResultViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B3BC12301BAB755A001A56C4 /* SearchResultViewController.m */; };
 		B3BC12331BAB755A001A56C4 /* SearchResultViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B3BC12311BAB755A001A56C4 /* SearchResultViewController.xib */; };
@@ -73,6 +74,7 @@
 		B3A2DDE51BACEA4F006BE0DB /* SwitchCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SwitchCell.h; sourceTree = "<group>"; };
 		B3A2DDE61BACEA4F006BE0DB /* SwitchCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SwitchCell.m; sourceTree = "<group>"; };
 		B3A2DDE71BACEA4F006BE0DB /* SwitchCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SwitchCell.xib; sourceTree = "<group>"; };
+		B3A2DDEA1BACEF6D006BE0DB /* categories.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = categories.json; sourceTree = "<group>"; };
 		B3BC122C1BAB72C2001A56C4 /* YelpCredentials.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YelpCredentials.h; sourceTree = "<group>"; };
 		B3BC122D1BAB72C2001A56C4 /* YelpCredentials.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YelpCredentials.m; sourceTree = "<group>"; };
 		B3BC122F1BAB755A001A56C4 /* SearchResultViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchResultViewController.h; sourceTree = "<group>"; };
@@ -185,6 +187,7 @@
 		42FD6C5118DC286B000BF2B9 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				B3A2DDEA1BACEF6D006BE0DB /* categories.json */,
 				42FD6C5218DC286B000BF2B9 /* Yelp-Info.plist */,
 				42FD6C5318DC286B000BF2B9 /* InfoPlist.strings */,
 				42FD6C5618DC286B000BF2B9 /* main.m */,
@@ -321,6 +324,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B3A2DDEB1BACEF6D006BE0DB /* categories.json in Resources */,
 				42FD6C5518DC286B000BF2B9 /* InfoPlist.strings in Resources */,
 				B3BC123D1BABC609001A56C4 /* BusinessTableViewCell.xib in Resources */,
 				B3A2DDE41BACE133006BE0DB /* FiltersViewController.xib in Resources */,

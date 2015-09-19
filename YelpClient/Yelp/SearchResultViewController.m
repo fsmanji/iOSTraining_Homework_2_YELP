@@ -37,6 +37,7 @@
         // You can register for Yelp API keys here: http://www.yelp.com/developers/manage_api_keys
         self.client = [YelpAPI defaultClient];
         self.searchResult = [NSMutableArray array];
+        _lastSearchStr = @"Restaurants";
     }
     return self;
 }
@@ -49,6 +50,8 @@
     [self styleNavigationBar];
     
     [self configureTableView];
+    
+    [self onRefresh:nil];
 }
 
 
@@ -60,7 +63,7 @@
 
 - (void)onRefresh:(id)sender {
     [_searchResult removeAllObjects];
-    [self doSearch:_lastSearchStr];
+    [self doSearch:_lastSearchStr withFilters:nil];
 }
 
 #pragma private methods
@@ -120,24 +123,29 @@
 }
 
 
-- (void)doSearch:(NSString *)term {
+- (void)doSearch:(NSString *)term withFilters:(NSString *)filters{
     _lastSearchStr = term;
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    [self.client searchWithTerm:term completionHandler:^(NSArray *businesses, NSError *error) {
-        if([businesses count] > 0) {
-            [_searchResult addObjectsFromArray:businesses];
-            [self.tableView reloadData];
-        } else if(error != nil) {
+    [self.client searchWithTerm:term andFilters:filters completionHandler:^(NSArray *businesses, NSError *error) {
+       
+        if(error != nil) {
             [UIAlertView showAlert:self with:@"Search Yelp Failed!" withMessage:error.description];
         }
+
+        [_searchResult addObjectsFromArray:businesses];
+
+        [self.tableView reloadData];
+        
         [self.refreshControl endRefreshing];
         [MBProgressHUD hideHUDForView:self.view animated:YES];
     }];
 }
 
 
-- (void)filtersViewController:(FiltersViewController *)sender didChangeFilters:(NSDictionary *)filters {
+- (void)filtersViewController:(FiltersViewController *)sender didChangeFilters:(NSString *)filters {
+    [_searchResult removeAllObjects];
     
+    [self doSearch:_lastSearchStr withFilters:filters];
 }
 
 #pragma Tableview datasource
@@ -182,7 +190,7 @@
 #pragma search delegate
 
 - (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar {
-    [self doSearch:_searchBar.text];
+    [self doSearch:_searchBar.text withFilters:nil];
     _searchBar.text = @"";
     //searchbar needs explicity call to resign first responder
     [_searchBar resignFirstResponder];

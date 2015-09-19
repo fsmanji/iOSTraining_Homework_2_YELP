@@ -13,7 +13,7 @@
 
 - (id)initWithConsumerKey:(NSString *)consumerKey consumerSecret:(NSString *)consumerSecret accessToken:(NSString *)accessToken accessSecret:(NSString *)accessSecret;
 
-- (void)searchWithTerm:(NSString *)term completionHandler:(void(^)(NSArray *businesses, NSError *error))handler;
+- (void)searchWithTerm:(NSString *)term andFilters:(NSString *)filters completionHandler:(void(^)(NSArray *businesses, NSError *error))handler;
 
 
 +(id) defaultClient;

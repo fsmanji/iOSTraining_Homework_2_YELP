@@ -41,12 +41,18 @@
     return self;
 }
 
-- (void)searchWithTerm:(NSString *)term completionHandler:(void(^)(NSArray *businesses, NSError *error))handler {
-    
+- (void)searchWithTerm:(NSString *)term andFilters:(NSString *)filters completionHandler:(void(^)(NSArray *businesses, NSError *error))handler {
+    if(!term) {
+        term = @"Restaurants";
+    }
     // For additional parameters, see http://www.yelp.com/developers/documentation/v2/search_api
-    NSDictionary *parameters = @{@"term": term,
+    NSDictionary *defaultParams = @{@"term": term,
                                  @"location": @"San Francisco",
                                  @"cll": @"37.7833, 122.4167"};
+    NSMutableDictionary * parameters = [NSMutableDictionary dictionaryWithDictionary:defaultParams];
+    if(filters) {
+        [parameters setObject:filters forKey:@"category_filter"];
+    }
     
     NSLog(@"Search with parameters: %@", parameters);
 
